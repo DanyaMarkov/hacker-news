@@ -4,11 +4,8 @@ import { ResponseAction, ResponseActionTypes, ResponseState } from '../types/res
 const initialState : ResponseState = {
     loading: false,
     currentResponses: [],
-    // currentResponses: [],
     error: null
-
 }
-
 
 export const ResponseeReducer = (state = initialState, action: ResponseAction): ResponseState => {
     switch(action.type) {

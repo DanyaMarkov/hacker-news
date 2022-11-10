@@ -1,12 +1,12 @@
 import { Button, Col, Row, Spin } from "antd";
 import { useEffect } from "react";
 import "antd/dist/antd.css";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 import type {} from "redux-thunk/extend-redux";
-import { useActions } from "../../hooks/useActions";
-import NewsItem from "../../components/NewsItem/NewsItem";
+import { useActions } from "../hooks/useActions";
+import NewsItem from "../components/NewsItem";
 
-const News: React.FC = () => {
+const NewsList: React.FC = () => {
     const { newsList, loading, error } = useTypedSelector((state) => state.news);
     const { fetchNews } = useActions();
 
@@ -15,11 +15,10 @@ const News: React.FC = () => {
 
         //Обновление списка новостей каждые 60 секунд
         let updateFetchEvery60Seconds = setInterval(() => fetchNews(), 60000);
-
+        //Сброс таймера при закрытии страницы
         return () => {
             clearInterval(updateFetchEvery60Seconds);
         };
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -63,7 +62,7 @@ const News: React.FC = () => {
             </Row>
             <Row>
                 {newsList
-                    ? newsList.map((newsEl) => {
+                    ? newsList?.map((newsEl) => {
                           return (
                               <NewsItem
                                   key={newsEl.id}
@@ -83,4 +82,4 @@ const News: React.FC = () => {
     );
 };
 
-export default News;
+export default NewsList;

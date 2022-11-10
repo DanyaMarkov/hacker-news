@@ -1,9 +1,9 @@
 // import { Avatar, Col, Comment, Row } from "antd";
 import { Spin } from "antd";
 import { useEffect, useState } from "react";
-import { useActions } from "../../hooks/useActions";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
-import CommentItem from "../CommentItem/CommentItem";
+import { useActions } from "../hooks/useActions";
+import { useTypedSelector } from "../hooks/useTypedSelector";
+import CommentItem from "./CommentItem";
 
 type PropTypes = {
     commentsIDs: number[];
@@ -20,41 +20,24 @@ interface Response {
 }
 
 const Responses: React.FC<PropTypes> = ({ commentsIDs, visible }) => {
-    // const { currentResponses, loading, error } = useTypedSelector((state) => state.response);
     const { currentResponses } = useTypedSelector((state) => state.response);
     const { fetchResponses } = useActions();
 
     let [localResponses, setLocalResponses] = useState<Response[]>([]);
 
-    // const setResponses = useCallback(() => {
-    const setResponses = () => {
-        setLocalResponses(currentResponses);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        localResponses = [...currentResponses.sort((a, b) => b - a)];
-        console.log("localResponses" + localResponses);
+    const setResponses = async () => {
+        fetchAllResponses();
+        setLocalResponses(currentResponses.sort((a, b) => b - a));
     };
 
-    useEffect(() => {
-        fetchResponses(commentsIDs);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    const fetchAllResponses = async () => {
+        await fetchResponses(commentsIDs);
+    };
 
     useEffect(() => {
         setResponses();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [visible]);
-
-    // if (loading) {
-    //     return (
-    //         <h1>
-    //             <Spin />
-    //             ⠀Идёт загрузка ответов
-    //         </h1>
-    //     );
-    // }
-    // if (error) {
-    //     return <h1>{error}</h1>;
-    // }
 
     if (currentResponses.length !== 0 && localResponses.length === 0) {
         setResponses();
@@ -64,7 +47,7 @@ const Responses: React.FC<PropTypes> = ({ commentsIDs, visible }) => {
             <ul>
                 {currentResponses ? (
                     localResponses
-                        .sort((a: any, b: any) => b - a)
+                        // .sort((a: any, b: any) => b - a)
                         .map((response: Response) => {
                             if (response.deleted) {
                                 return null;

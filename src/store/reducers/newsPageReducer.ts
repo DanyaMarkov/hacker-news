@@ -7,7 +7,6 @@ const initialState : NewsPageState = {
     error: null,
 }
 
-
 export const newsPageReducer = (state = initialState, action: NewsPageAction): NewsPageState => {
     switch(action.type) {
         case NewsPageActionTypes.FETCH_NEWS_PAGE:

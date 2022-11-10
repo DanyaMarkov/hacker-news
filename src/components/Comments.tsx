@@ -2,9 +2,9 @@
 import { Spin } from "antd";
 import React from "react";
 import { useEffect } from "react";
-import { useActions } from "../../hooks/useActions";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
-import CommentItem from "../CommentItem/CommentItem";
+import { useActions } from "../hooks/useActions";
+import { useTypedSelector } from "../hooks/useTypedSelector";
+import CommentItem from "./CommentItem";
 
 type PropTypes = {
     commentsIDs: number[];
@@ -19,7 +19,7 @@ interface Comment {
     deleted: boolean;
 }
 
-const Comments: React.FC<PropTypes> = ({ commentsIDs }, props) => {
+const Comments: React.FC<PropTypes> = ({ commentsIDs }) => {
     const { currentComments, loading, error } = useTypedSelector((state) => state.comment);
 
     const { fetchComments } = useActions();
@@ -42,11 +42,8 @@ const Comments: React.FC<PropTypes> = ({ commentsIDs }, props) => {
 
     return (
         <>
-            {/* <ul style={{ listStyleType: "none" }}> */}
-            {/* <ul style={{ listStyleType: "none" }}> */}
             <ul>
                 {currentComments && currentComments.length > 0 ? (
-                    //реверс массива чтобы сверху были новые комментарии
                     currentComments.map((comment: Comment) => {
                         if (comment.deleted) {
                             return null;

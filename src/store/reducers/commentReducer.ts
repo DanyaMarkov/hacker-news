@@ -1,12 +1,10 @@
 import { CommentAction, CommentActionTypes, CommentState } from './../types/comment';
 
-
 const initialState : CommentState = {
     loading: false,
     currentComments: [],
     error: null
 }
-
 
 export const commenteReducer = (state = initialState, action: CommentAction): CommentState => {
     switch(action.type) {

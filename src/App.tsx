@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import News from "./pages/News/News";
-import NewsPage from "./pages/NewsPage/NewsPage";
+import NewsList from "./pages/NewsList";
+import NewsPage from "./pages/NewsPage";
 import Layout, { Content, Footer } from "antd/lib/layout/layout";
 import { Menu } from "antd";
 import { Header } from "antd/lib/layout/layout";
@@ -17,21 +17,18 @@ const App: React.FC = () => {
                 <Content
                     className="site-layout"
                     style={{ padding: "0 350px", marginTop: 10, backgroundColor: "#DCDCDC" }}
-                    // style={{ padding: "0 350px", marginTop: 10, backgroundColor: "#484342" }}
                 >
                     <div
                         className="site-layout-background"
                         style={{ padding: 14, minHeight: "calc(100vh - 144px)", backgroundColor: "#DCDCDC" }}
-                        // style={{ padding: 14, minHeight: "calc(100vh - 144px)", backgroundColor: "#DCDCDC" }}
                     >
                         <Routes>
-                            <Route path="/" element={<News />} />
+                            <Route path="/" element={<NewsList />} />
                             <Route path="/:id" element={<NewsPage />} />
                         </Routes>
                     </div>
                 </Content>
                 <Footer style={{ textAlign: "center", backgroundColor: "#DCDCDC", color: "black" }}>
-                    {/* <Footer style={{ textAlign: "center", backgroundColor: "#484342", color: "white" }}> */}
                     HackerNews for AvitoTech ©2022 Created by Daniil Markov
                 </Footer>
             </Layout>

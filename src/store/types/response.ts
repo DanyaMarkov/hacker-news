@@ -11,9 +11,7 @@ export enum ResponseActionTypes {
     FETCH_RESPONSE_ERROR = "FETCH_RESPONSE_ERROR"
 }
 
-
 export type ResponseAction = FetchResponseAction | FetchResponseSuccessAction | FetchResponseErrorAction
-
 
 interface FetchResponseAction {
     type: ResponseActionTypes.FETCH_RESPONSE;
