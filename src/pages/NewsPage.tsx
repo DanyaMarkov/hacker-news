@@ -1,4 +1,4 @@
-import { Button, Descriptions, PageHeader, Spin } from "antd";
+import { BackTop, Button, Descriptions, PageHeader, Spin } from "antd";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useActions } from "../hooks/useActions";
@@ -83,6 +83,8 @@ const NewsPage: React.FC = () => {
                     )}
                 </>
             ) : null}
+            {/* К началу (верху) страницы */}
+            <BackTop />
         </div>
     );
 };

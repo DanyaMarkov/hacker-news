@@ -1,4 +1,4 @@
-import { Button, Col, Row, Spin } from "antd";
+import { BackTop, Button, Col, Row, Spin } from "antd";
 import { useEffect } from "react";
 import "antd/dist/antd.css";
 import { useTypedSelector } from "../hooks/useTypedSelector";
@@ -61,7 +61,7 @@ const NewsList: React.FC = () => {
                 </Col>
             </Row>
             <Row>
-                {newsList
+                {newsList.length > 0
                     ? newsList?.map((newsEl) => {
                           return (
                               <NewsItem
@@ -78,6 +78,8 @@ const NewsList: React.FC = () => {
                       })
                     : null}
             </Row>
+            {/* К началу (верху) страницы */}
+            <BackTop />
         </>
     );
 };
