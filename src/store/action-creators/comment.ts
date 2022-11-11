@@ -1,7 +1,7 @@
 import { CommentActionTypes } from './../types/comment';
-import axios from 'axios';
 import { Dispatch } from 'redux';
 import { CommentAction } from '../types/comment';
+import { API_URL } from '../../utils/const';
 
 export const fetchComments = (commentsIds:number[]) => {
     return async(dispatch:Dispatch<CommentAction>) => {
@@ -10,11 +10,12 @@ export const fetchComments = (commentsIds:number[]) => {
 
             const responseComments = await Promise.all(
                 commentsIds.map((commentID:number) => {
-                    return axios.get(`https://hacker-news.firebaseio.com/v0/item/${commentID}.json?print=pretty`).then((response) => response.data);
+                    return fetch(`${API_URL}/item/${commentID}.json?print=pretty`).then((response) => response.json());
                 })
             );
 
             responseComments.sort((a: any, b: any) => b.time - a.time)
+
             dispatch({type: CommentActionTypes.FETCH_COMMENT_SUCCESS, payload: responseComments})
         }
         catch (e){

@@ -1,7 +1,7 @@
 import { ResponseActionTypes } from '../types/response';
-import axios from 'axios';
 import { Dispatch } from 'redux';
 import { ResponseAction } from '../types/response';
+import { API_URL } from '../../utils/const';
 
 export const fetchResponses = (ResponsesIds:number[]) => {
     return async(dispatch:Dispatch<ResponseAction>) => {
@@ -10,7 +10,7 @@ export const fetchResponses = (ResponsesIds:number[]) => {
 
             const responseResponses = await Promise.all(
                 ResponsesIds.map((responseID:number) => {
-                    return axios.get(`https://hacker-news.firebaseio.com/v0/item/${responseID}.json?print=pretty`).then((response) => response.data);
+                    return fetch(`${API_URL}/item/${responseID}.json?print=pretty`).then((response) => response.json());
                 })
             );
 

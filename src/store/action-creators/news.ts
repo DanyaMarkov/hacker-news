@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { Dispatch } from 'redux';
+import { API_URL } from '../../utils/const';
 import { NewsAction, NewsActionTypes } from './../types/news';
 
 export const fetchNews = () => {
@@ -7,14 +7,14 @@ export const fetchNews = () => {
         try {
             dispatch({type: NewsActionTypes.FETCH_NEWS})
 
-            const newStoriesIds = await axios.get('https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty').then((response) => response.data)
+            const newStoriesIds = await fetch(`${API_URL}/newstories.json?print=pretty`).then((response) => response.json())
             
             //Берём 100 элементов
             const storiesIds = newStoriesIds.slice(0, 100);
 
             const responseStories = await Promise.all(
                 storiesIds.map((storieId:number) => {
-                    return axios.get(`https://hacker-news.firebaseio.com/v0/item/${storieId}.json?print=pretty`).then((response) => response.data);
+                    return fetch(`${API_URL}/item/${storieId}.json?print=pretty`).then((response) => response.json());
                 })
               );
 

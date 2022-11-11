@@ -17,7 +17,6 @@
 -   Redux / Redux Thunk
 -   React-Router-Dom для роутинга;
 -   React (Hooks)
--   Axios для HTTP-запросов,
 -   AntDesign (библиотека компонентов);
 
 ## Запуск проекта
