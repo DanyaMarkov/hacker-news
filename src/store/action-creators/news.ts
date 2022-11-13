@@ -16,7 +16,7 @@ export const fetchNews = () => {
             const responseStories = await Promise.all(
                 storiesIds.map(async (storieId:number) => {
                     let response = await fetch(`${API_URL}/item/${storieId}.json?print=pretty`)
-                    return response.json();
+                    return await response.json();
                 })
               );
 

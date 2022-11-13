@@ -1,4 +1,8 @@
-export const convertToTime = (timeStamp: number) => {
+export const convertTimestampToDate = (timeStamp: number) => {
+
+    if (timeStamp <= 0) {
+        return "Некорректный timestamp"
+    }
     let date = new Date(timeStamp * 1000);
     let hours = date.getHours();
     let minutes = "0" + date.getMinutes();

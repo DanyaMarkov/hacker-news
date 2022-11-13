@@ -1,7 +1,7 @@
 import { Button, Card, Row } from "antd";
 import React from "react";
 import { useState } from "react";
-import { convertToTime } from "../utils/dateConverter";
+import { convertTimestampToDate } from "../utils/dateConverter";
 import { timeDifference } from "../utils/timeDifference";
 import Responses from "./Responses";
 
@@ -24,7 +24,7 @@ const CommentItem: React.FC<PropTypes> = ({ by, time, text, kids }) => {
         <>
             <Card
                 title={by + " | " + timeDifference(time)}
-                extra={convertToTime(time)}
+                extra={convertTimestampToDate(time)}
                 headStyle={{ backgroundColor: "#FFFFFF" }}
                 bodyStyle={{ padding: 5 }}
             >

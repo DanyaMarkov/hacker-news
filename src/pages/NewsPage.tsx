@@ -5,7 +5,7 @@ import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import type {} from "redux-thunk/extend-redux";
 import Comments from "../components/Comments";
-import { convertToTime } from "../utils/dateConverter";
+import { convertTimestampToDate } from "../utils/dateConverter";
 
 const NewsPage: React.FC = () => {
     const navigate = useNavigate();
@@ -61,7 +61,7 @@ const NewsPage: React.FC = () => {
                             </Descriptions.Item>
 
                             <Descriptions.Item labelStyle={{ fontWeight: "bold" }} label="Опубликовано">
-                                {convertToTime(currentNews.time)}
+                                {convertTimestampToDate(currentNews.time)}
                             </Descriptions.Item>
                             <Descriptions.Item labelStyle={{ fontWeight: "bold" }} label="Ссылка на новость:">
                                 <a target="_blank" rel="noreferrer" href={currentNews.url}>

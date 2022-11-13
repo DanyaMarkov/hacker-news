@@ -18,6 +18,7 @@
 -   React-Router-Dom для роутинга;
 -   React (Hooks)
 -   AntDesign (библиотека компонентов);
+-   JEST (фреймворк для тестирования)
 
 ## Деплой проекта
 
@@ -41,7 +42,7 @@ yarn add
 yarn start
 ```
 
-После этого веб-приложение будет доступно по адресу localhost:3000
+После успешного запуска веб-приложение будет доступно по адресу localhost:3000
 
 ## Технологии проекта
 
@@ -52,6 +53,7 @@ yarn start
   <img alt="Redux-Thunk" src="https://img.shields.io/badge/-Redux_Thunk-white?style=for-the-badge&logo=Redux&logoColor=430098" />
   <img alt="React-Router" src="https://img.shields.io/badge/-React_Router-black?style=for-the-badge&logo=react-router&logoColor=orange" />
   <img alt="AntDesign" src="https://img.shields.io/badge/-AntDesign-18b4ec?style=for-the-badge&logo=antdesign&logoColor=white" />
+  <img alt="JEST" src="https://img.shields.io/badge/-JEST-984150?style=for-the-badge&logo=jest&logoColor=white" />
   <img alt="git" src="https://img.shields.io/badge/-Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
   <img alt="EsLint" src="https://img.shields.io/badge/-EsLint-blue?style=for-the-badge&logo=EsLint&logoColor=white" />
 </p>

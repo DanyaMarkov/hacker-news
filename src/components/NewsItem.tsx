@@ -1,7 +1,7 @@
 import { Card, Col, Row } from "antd";
 import { NavLink } from "react-router-dom";
 import { cardHeadBackground } from "../utils/cssVariables";
-import { convertToTime } from "../utils/dateConverter";
+import { convertTimestampToDate } from "../utils/dateConverter";
 
 type PropTypes = {
     // newsEl: object;
@@ -48,7 +48,7 @@ const NewsItem: React.FC<PropTypes> = ({ id, title, time, by, score, kids, desce
                 </Row>
                 <Row>
                     <Col span={8}>{by}</Col>
-                    <Col span={8}>{convertToTime(time)}</Col>
+                    <Col span={8}>{convertTimestampToDate(time)}</Col>
                     <Col span={8}>{score > 10 ? "🔥 " + score : "⭐ " + score}</Col>
                 </Row>
                 {/* Количество комментариев : {descendants} */}

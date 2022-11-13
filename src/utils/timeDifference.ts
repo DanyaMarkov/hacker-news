@@ -1,12 +1,16 @@
 //вычисление сколько времени назад был опубликован комментарий
-export const timeDifference = (current: number) => {
+export const timeDifference = (publicationTime: number) => {
     var msPerMinute = 60;
     var msPerHour = msPerMinute * 60;
     var msPerDay = msPerHour * 24;
     var msPerMonth = msPerDay * 30;
     var msPerYear = msPerDay * 365;
 
-    var elapsed = Number(Date.now()) / 1000 - current;
+    if (publicationTime > Number(Date.now()) / 1000 || publicationTime < 0) {
+        return "Некорректное время"
+    }
+
+    var elapsed = Number(Date.now()) / 1000 - publicationTime;
 
     if (elapsed < msPerMinute) {
         return Math.round(elapsed) + numWord(Math.round(elapsed), ["секунду", "секунды", "секунд"]);

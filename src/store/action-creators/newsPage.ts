@@ -8,7 +8,7 @@ export const fetchNewsInformation = (id:number) => {
             dispatch({type: NewsPageActionTypes.FETCH_NEWS_PAGE})
 
             let response = await fetch(`${API_URL}/item/${id}.json?print=pretty`)
-            let newsInfo = response.json()
+            let newsInfo = await response.json()
 
             dispatch({type: NewsPageActionTypes.FETCH_NEWS_PAGE_SUCCESS, payload: newsInfo})
             

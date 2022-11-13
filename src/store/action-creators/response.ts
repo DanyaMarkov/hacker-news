@@ -11,7 +11,7 @@ export const fetchResponses = (ResponsesIds:number[]) => {
             const responseResponses = await Promise.all(
                 ResponsesIds.map(async (responseID:number) => {
                     let response = await fetch(`${API_URL}/item/${responseID}.json?print=pretty`)
-                    return response.json();
+                    return await response.json();
                 })
             );
 
