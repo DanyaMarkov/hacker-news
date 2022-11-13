@@ -7,14 +7,16 @@ export const fetchNews = () => {
         try {
             dispatch({type: NewsActionTypes.FETCH_NEWS})
 
-            const newStoriesIds = await fetch(`${API_URL}/newstories.json?print=pretty`).then((response) => response.json())
+            const responseNewStoriesIds = await fetch(`${API_URL}/newstories.json?print=pretty`)
             
+            let storiesIds = await responseNewStoriesIds.json()
             //Берём 100 элементов
-            const storiesIds = newStoriesIds.slice(0, 100);
+            storiesIds = storiesIds.slice(0, 100)
 
             const responseStories = await Promise.all(
-                storiesIds.map((storieId:number) => {
-                    return fetch(`${API_URL}/item/${storieId}.json?print=pretty`).then((response) => response.json());
+                storiesIds.map(async (storieId:number) => {
+                    let response = await fetch(`${API_URL}/item/${storieId}.json?print=pretty`)
+                    return response.json();
                 })
               );
 

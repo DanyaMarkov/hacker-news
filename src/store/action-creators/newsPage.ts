@@ -7,9 +7,10 @@ export const fetchNewsInformation = (id:number) => {
         try {
             dispatch({type: NewsPageActionTypes.FETCH_NEWS_PAGE})
 
-            let news = await fetch(`${API_URL}/item/${id}.json?print=pretty`).then((response) => response.json())
+            let response = await fetch(`${API_URL}/item/${id}.json?print=pretty`)
+            let newsInfo = response.json()
 
-            dispatch({type: NewsPageActionTypes.FETCH_NEWS_PAGE_SUCCESS, payload: news})
+            dispatch({type: NewsPageActionTypes.FETCH_NEWS_PAGE_SUCCESS, payload: newsInfo})
             
         }
         catch (e){

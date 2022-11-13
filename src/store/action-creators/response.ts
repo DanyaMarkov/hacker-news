@@ -9,8 +9,9 @@ export const fetchResponses = (ResponsesIds:number[]) => {
             dispatch({type: ResponseActionTypes.FETCH_RESPONSE})
 
             const responseResponses = await Promise.all(
-                ResponsesIds.map((responseID:number) => {
-                    return fetch(`${API_URL}/item/${responseID}.json?print=pretty`).then((response) => response.json());
+                ResponsesIds.map(async (responseID:number) => {
+                    let response = await fetch(`${API_URL}/item/${responseID}.json?print=pretty`)
+                    return response.json();
                 })
             );
 

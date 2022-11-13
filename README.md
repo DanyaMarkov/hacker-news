@@ -2,12 +2,12 @@
 
 ### Приложение для тестового задания Avito Tech
 
-> [задание](https://github.com/avito-tech/internship_frontend_2022)
+> [Задание](https://github.com/avito-tech/internship_frontend_2022)
 
 Функционал приложения :
 
 -   Просмотр новостей с API HackerNews
--   Просмотр конкретной новости
+-   Просмотр подробной информации конкретной новости
 -   Просмотр комментариев к новостям
 
 При разработке проекта использовались:
@@ -34,6 +34,7 @@ yarn add
 ```
 
 Данная команда подтянет все необходимые зависимости для работы проекта.
+
 После этого необходимо набрать команду:
 
 ```javascript
@@ -49,9 +50,8 @@ yarn start
   <img alt="Typescript" src="https://img.shields.io/badge/-Typescript-317ac5?style=for-the-badge&logo=typescript&logoColor=white" />
   <img alt="Redux" src="https://img.shields.io/badge/-Redux-430098?style=for-the-badge&logo=redux&logoColor=white" />
   <img alt="Redux-Thunk" src="https://img.shields.io/badge/-Redux_Thunk-white?style=for-the-badge&logo=Redux&logoColor=430098" />
-    <img alt="React-Router" src="https://img.shields.io/badge/-React_Router-black?style=for-the-badge&logo=react-router&logoColor=orange" />
+  <img alt="React-Router" src="https://img.shields.io/badge/-React_Router-black?style=for-the-badge&logo=react-router&logoColor=orange" />
   <img alt="AntDesign" src="https://img.shields.io/badge/-AntDesign-18b4ec?style=for-the-badge&logo=antdesign&logoColor=white" />
   <img alt="git" src="https://img.shields.io/badge/-Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
-    <img alt="EsLint" src="https://img.shields.io/badge/-EsLint-blue?style=for-the-badge&logo=EsLint&logoColor=white" />
-  
-  </p>
+  <img alt="EsLint" src="https://img.shields.io/badge/-EsLint-blue?style=for-the-badge&logo=EsLint&logoColor=white" />
+</p>

@@ -9,8 +9,9 @@ export const fetchComments = (commentsIds:number[]) => {
             dispatch({type: CommentActionTypes.FETCH_COMMENT})
 
             const responseComments = await Promise.all(
-                commentsIds.map((commentID:number) => {
-                    return fetch(`${API_URL}/item/${commentID}.json?print=pretty`).then((response) => response.json());
+                commentsIds.map(async (commentID:number) => {
+                    let response =  await fetch(`${API_URL}/item/${commentID}.json?print=pretty`)
+                    return response.json()
                 })
             );
 
