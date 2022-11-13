@@ -28,7 +28,6 @@ const NewsList: React.FC = () => {
                 <Row justify="space-between" align="middle">
                     <Col>
                         <h1 style={{ color: "black" }}>Новости</h1>
-                        {/* <Button onClick={() => navigate("/33344426")}>большая новость</Button> */}
                     </Col>
                     <Col>
                         <Button disabled type="primary" onClick={() => fetchNews()}>
@@ -71,8 +70,6 @@ const NewsList: React.FC = () => {
                                   by={newsEl.by}
                                   score={newsEl.score}
                                   time={newsEl.time}
-                                  kids={newsEl.kids}
-                                  descendants={newsEl.descendants}
                               />
                           );
                       })

@@ -4,17 +4,14 @@ import { cardHeadBackground } from "../utils/cssVariables";
 import { convertTimestampToDate } from "../utils/dateConverter";
 
 type PropTypes = {
-    // newsEl: object;
     id: number;
     title: string;
     time: number;
     by: string;
     score: number;
-    kids: any[];
-    descendants: number;
 };
 
-const NewsItem: React.FC<PropTypes> = ({ id, title, time, by, score, kids, descendants }) => {
+const NewsItem: React.FC<PropTypes> = ({ id, title, time, by, score }) => {
     const gridStyle: React.CSSProperties = {
         width: "100%",
         margin: 10,
@@ -28,12 +25,7 @@ const NewsItem: React.FC<PropTypes> = ({ id, title, time, by, score, kids, desce
     };
 
     return (
-        <NavLink
-            to={{
-                pathname: `${id}`,
-            }}
-            style={gridStyle}
-        >
+        <NavLink to={`${id}`} style={gridStyle}>
             <Card
                 hoverable
                 title={title}
@@ -51,7 +43,6 @@ const NewsItem: React.FC<PropTypes> = ({ id, title, time, by, score, kids, desce
                     <Col span={8}>{convertTimestampToDate(time)}</Col>
                     <Col span={8}>{score > 10 ? "🔥 " + score : "⭐ " + score}</Col>
                 </Row>
-                {/* Количество комментариев : {descendants} */}
             </Card>
         </NavLink>
     );

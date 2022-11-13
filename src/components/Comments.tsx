@@ -45,10 +45,6 @@ const Comments: React.FC<PropTypes> = ({ commentsIDs }) => {
             <ul>
                 {currentComments && currentComments.length > 0 ? (
                     currentComments.map((comment: Comment) => {
-                        if (comment.deleted) {
-                            return null;
-                        }
-
                         return (
                             <li>
                                 <CommentItem
@@ -57,6 +53,7 @@ const Comments: React.FC<PropTypes> = ({ commentsIDs }) => {
                                     time={comment.time}
                                     text={comment.text}
                                     kids={comment.kids}
+                                    isDeleted={comment.deleted}
                                 />
                             </li>
                         );

@@ -46,25 +46,20 @@ const Responses: React.FC<PropTypes> = ({ commentsIDs, visible }) => {
         <>
             <ul>
                 {currentResponses ? (
-                    localResponses
-                        // .sort((a: any, b: any) => b - a)
-                        .map((response: Response) => {
-                            if (response.deleted) {
-                                return null;
-                            }
-
-                            return (
-                                <li>
-                                    <CommentItem
-                                        key={response.id}
-                                        by={response.by}
-                                        time={response.time}
-                                        text={response.text}
-                                        kids={response.kids}
-                                    />
-                                </li>
-                            );
-                        })
+                    localResponses.map((response: Response) => {
+                        return (
+                            <li>
+                                <CommentItem
+                                    key={response.id}
+                                    by={response.by}
+                                    time={response.time}
+                                    text={response.text}
+                                    kids={response.kids}
+                                    isDeleted={response.deleted}
+                                />
+                            </li>
+                        );
+                    })
                 ) : (
                     <>
                         <Spin />

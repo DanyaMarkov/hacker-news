@@ -15,7 +15,7 @@
 -   TypeScript
 -   React
 -   Redux / Redux Thunk
--   React-Router-Dom для роутинга;
+-   React-Router-Dom v5 для роутинга;
 -   React (Hooks)
 -   AntDesign (библиотека компонентов);
 -   JEST (фреймворк для тестирования)

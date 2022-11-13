@@ -1,4 +1,5 @@
-import { Route, Routes } from "react-router-dom";
+// import { Route, Routes } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import NewsList from "./pages/NewsList";
 import NewsPage from "./pages/NewsPage";
 import Layout, { Content, Footer } from "antd/lib/layout/layout";
@@ -12,15 +13,19 @@ const App: React.FC = () => {
                 <Header className="header" style={{ padding: "0 350px", backgroundColor: orange }}>
                     <h2 style={{ color: "black", fontWeight: "bold" }}>HackerNews</h2>
                 </Header>
-                <Content className="site-layout" style={{ padding: "0 350px", marginTop: 10 }}>
+                <Content style={{ padding: "0 350px", marginTop: 10 }}>
                     <div
-                        className="site-layout-background"
-                        style={{ padding: 14, minHeight: "calc(100vh - 144px)", backgroundColor: contentBackground }}
+                        style={{
+                            padding: 14,
+                            minHeight: "calc(100vh - 144px)",
+                            backgroundColor: contentBackground,
+                        }}
                     >
-                        <Routes>
-                            <Route path="/" element={<NewsList />} />
-                            <Route path="/:id" element={<NewsPage />} />
-                        </Routes>
+                        <Switch>
+                            <Route exact path="/" component={NewsList} />
+                            <Route path="/:id" component={NewsPage} />
+                            <Redirect to="/" />
+                        </Switch>
                     </div>
                 </Content>
                 <Footer style={{ textAlign: "center", backgroundColor: contentBackground, color: "black" }}>

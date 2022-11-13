@@ -10,9 +10,10 @@ type PropTypes = {
     time: number;
     text: string;
     kids: [];
+    isDeleted: boolean;
 };
 
-const CommentItem: React.FC<PropTypes> = ({ by, time, text, kids }) => {
+const CommentItem: React.FC<PropTypes> = ({ by, time, text, kids, isDeleted }) => {
     const [isChildVisible, changeChildVisible] = useState(false);
 
     //показать/скрыть ответы
@@ -23,13 +24,15 @@ const CommentItem: React.FC<PropTypes> = ({ by, time, text, kids }) => {
     return (
         <>
             <Card
-                title={by + " | " + timeDifference(time)}
+                title={isDeleted ? "Неизвестный автор | " + timeDifference(time) : by + " | " + timeDifference(time)}
                 extra={convertTimestampToDate(time)}
                 headStyle={{ backgroundColor: "#FFFFFF" }}
                 bodyStyle={{ padding: 5 }}
             >
                 <Row>
-                    <p style={{ wordWrap: "break-word", overflow: "hidden" }}>{text}</p>
+                    <p style={{ wordWrap: "break-word", overflow: "hidden" }}>
+                        {isDeleted ? <i>Комментарий удалён</i> : text}
+                    </p>
                 </Row>
 
                 {kids ? (

@@ -1,6 +1,6 @@
 import { BackTop, Button, Descriptions, PageHeader, Spin } from "antd";
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import type {} from "redux-thunk/extend-redux";
@@ -8,10 +8,12 @@ import Comments from "../components/Comments";
 import { convertTimestampToDate } from "../utils/dateConverter";
 
 const NewsPage: React.FC = () => {
-    const navigate = useNavigate();
+    const history = useHistory();
     const { currentNews, loading, error } = useTypedSelector((state) => state.newsPage);
     const { fetchNewsInformation, fetchComments } = useActions();
-    const { id } = useParams();
+
+    //берём ID новости из URl
+    const { id } = useParams<{ id?: string }>();
 
     useEffect(() => {
         fetchNewsInformation(Number(id));
@@ -43,7 +45,7 @@ const NewsPage: React.FC = () => {
 
     return (
         <div>
-            <Button style={{ backgroundColor: "#483C3C", color: "white" }} onClick={() => navigate("/")}>
+            <Button style={{ backgroundColor: "#483C3C", color: "white" }} onClick={() => history.push("/")}>
                 Назад
             </Button>
 
