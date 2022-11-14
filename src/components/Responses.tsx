@@ -43,31 +43,28 @@ const Responses: React.FC<PropTypes> = ({ commentsIDs, visible }) => {
         setResponses();
     }
     return (
-        <>
-            <ul>
-                {currentResponses ? (
-                    localResponses.map((response: Response) => {
-                        return (
-                            <li>
-                                <CommentItem
-                                    key={response.id}
-                                    by={response.by}
-                                    time={response.time}
-                                    text={response.text}
-                                    kids={response.kids}
-                                    isDeleted={response.deleted}
-                                />
-                            </li>
-                        );
-                    })
-                ) : (
-                    <>
-                        <Spin />
-                        Оказывается нет ответов :)
-                    </>
-                )}
-            </ul>
-        </>
+        <ul>
+            {currentResponses ? (
+                localResponses.map((response: Response) => {
+                    return (
+                        <li key={response.id}>
+                            <CommentItem
+                                by={response.by}
+                                time={response.time}
+                                text={response.text}
+                                kids={response.kids}
+                                isDeleted={response.deleted}
+                            />
+                        </li>
+                    );
+                })
+            ) : (
+                <>
+                    <Spin />
+                    Оказывается нет ответов :)
+                </>
+            )}
+        </ul>
     );
 };
 

@@ -1,4 +1,3 @@
-// import { Avatar, Col, Comment, Row } from "antd";
 import { Spin } from "antd";
 import React from "react";
 import { useEffect } from "react";
@@ -21,8 +20,8 @@ interface Comment {
 
 const Comments: React.FC<PropTypes> = ({ commentsIDs }) => {
     const { currentComments, loading, error } = useTypedSelector((state) => state.comment);
-
     const { fetchComments } = useActions();
+
     useEffect(() => {
         fetchComments(commentsIDs);
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -36,33 +35,31 @@ const Comments: React.FC<PropTypes> = ({ commentsIDs }) => {
             </h1>
         );
     }
+
     if (error) {
         return <h1>{error}</h1>;
     }
 
     return (
-        <>
-            <ul>
-                {currentComments && currentComments.length > 0 ? (
-                    currentComments.map((comment: Comment) => {
-                        return (
-                            <li>
-                                <CommentItem
-                                    key={comment.id}
-                                    by={comment.by}
-                                    time={comment.time}
-                                    text={comment.text}
-                                    kids={comment.kids}
-                                    isDeleted={comment.deleted}
-                                />
-                            </li>
-                        );
-                    })
-                ) : (
-                    <h4>без комментариев</h4>
-                )}
-            </ul>
-        </>
+        <ul>
+            {currentComments && currentComments.length > 0 ? (
+                currentComments.map((comment: Comment) => {
+                    return (
+                        <li key={comment.id}>
+                            <CommentItem
+                                by={comment.by}
+                                time={comment.time}
+                                text={comment.text}
+                                kids={comment.kids}
+                                isDeleted={comment.deleted}
+                            />
+                        </li>
+                    );
+                })
+            ) : (
+                <h4>без комментариев</h4>
+            )}
+        </ul>
     );
 };
 

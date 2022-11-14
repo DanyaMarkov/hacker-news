@@ -1,6 +1,6 @@
 import { Card, Col, Row } from "antd";
 import { NavLink } from "react-router-dom";
-import { cardHeadBackground } from "../utils/cssVariables";
+import { cardHeadBackground } from "../styles/cssVariables";
 import { convertTimestampToDate } from "../utils/dateConverter";
 
 type PropTypes = {
@@ -14,7 +14,7 @@ type PropTypes = {
 const NewsItem: React.FC<PropTypes> = ({ id, title, time, by, score }) => {
     const gridStyle: React.CSSProperties = {
         width: "100%",
-        margin: 10,
+        margin: "10px 0px",
     };
 
     const newsElement: React.CSSProperties = {
@@ -30,7 +30,7 @@ const NewsItem: React.FC<PropTypes> = ({ id, title, time, by, score }) => {
                 hoverable
                 title={title}
                 style={newsElement}
-                headStyle={{ backgroundColor: cardHeadBackground, color: "white", border: "1px black solid" }}
+                headStyle={{ backgroundColor: cardHeadBackground, color: "white", border: "0px black solid" }}
                 bodyStyle={{ backgroundColor: "#FFFFFF", border: "1px black solid" }}
             >
                 <Row style={{ fontWeight: "bold", fontSize: "16px" }}>

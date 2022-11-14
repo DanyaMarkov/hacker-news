@@ -1,5 +1,5 @@
 import { BackTop, Button, Descriptions, PageHeader, Spin } from "antd";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
@@ -39,6 +39,7 @@ const NewsPage: React.FC = () => {
             </h1>
         );
     }
+
     if (error) {
         return <h1>{error}</h1>;
     }
@@ -55,7 +56,11 @@ const NewsPage: React.FC = () => {
                         ghost={false}
                         style={{ marginTop: "10px" }}
                         title={currentNews.title}
-                        extra={[<Button onClick={() => updateComments()}>Обновить комментарии</Button>]}
+                        extra={
+                            <Button key={currentNews.id} onClick={() => updateComments()}>
+                                Обновить комментарии
+                            </Button>
+                        }
                     >
                         <Descriptions size="small" column={3}>
                             <Descriptions.Item labelStyle={{ fontWeight: "bold" }} label="Автор">
@@ -85,7 +90,7 @@ const NewsPage: React.FC = () => {
                     )}
                 </>
             ) : null}
-            {/* К началу (верху) страницы */}
+            {/* К верху страницы */}
             <BackTop />
         </div>
     );

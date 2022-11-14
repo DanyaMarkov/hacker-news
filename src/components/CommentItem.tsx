@@ -36,25 +36,23 @@ const CommentItem: React.FC<PropTypes> = ({ by, time, text, kids, isDeleted }) =
                 </Row>
 
                 {kids ? (
-                    <>
-                        <Row
-                            style={{
-                                justifyContent: "end",
-                                paddingRight: 20,
-                            }}
+                    <Row
+                        style={{
+                            justifyContent: "end",
+                            paddingRight: 20,
+                        }}
+                    >
+                        <Button
+                            style={
+                                isChildVisible
+                                    ? { backgroundColor: "#A5A5A5", color: "FFFFFF", fontSize: 12 }
+                                    : { backgroundColor: "#453E3E", color: "white", fontSize: 12 }
+                            }
+                            onClick={() => toggleShowChildrenComments()}
                         >
-                            <Button
-                                style={
-                                    isChildVisible
-                                        ? { backgroundColor: "#A5A5A5", color: "FFFFFF", fontSize: 12 }
-                                        : { backgroundColor: "#453E3E", color: "white", fontSize: 12 }
-                                }
-                                onClick={() => toggleShowChildrenComments()}
-                            >
-                                {isChildVisible ? <> скрыть ответы </> : <>показать ответы ({kids.length}) </>}
-                            </Button>
-                        </Row>
-                    </>
+                            {isChildVisible ? <> скрыть ответы </> : <>показать ответы ({kids.length}) </>}
+                        </Button>
+                    </Row>
                 ) : null}
             </Card>
             {isChildVisible ? (

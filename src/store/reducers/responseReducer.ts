@@ -1,6 +1,5 @@
 import { ResponseAction, ResponseActionTypes, ResponseState } from '../types/response';
 
-
 const initialState : ResponseState = {
     loading: false,
     currentResponses: [],
